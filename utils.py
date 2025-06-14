@@ -9,3 +9,14 @@ def get_serial_number():
             is_last_digit_odd = int(last_digit) % 2 == 1
             return serial, has_vowel, is_last_digit_odd
         print("序列号必须包含至少一个数字，请重新输入。")
+
+def get_battery_count():
+    while True:
+        try:
+            battery_count = int(input("请输入电池数量（0 或正整数）："))
+            if battery_count < 0:
+                print("电池数量不能为负数！")
+                continue
+            return battery_count
+        except ValueError:
+            print("请输入有效的数字！")
