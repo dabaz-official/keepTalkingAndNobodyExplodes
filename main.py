@@ -12,17 +12,7 @@ import password
 
 def main():
     modules = {
-        "1": ("简单电线", wires.solve),
-        "2": ("按钮", button.solve),
-        "3": ("符号键盘", keypad.solve),
-        "4": ("Simon Says", simon_says.solve),
-        "5": ("Who's on First", whos_on_first.solve),
-        "6": ("记忆", memory.solve),
-        "7": ("摩斯密码", morse_code.solve),
-        "8": ("复杂电线", complicated_wires.solve),
-        "9": ("电线序列", wire_sequences.solve),
-        "10": ("迷宫", maze.solve),
-        "11": ("密码", password.solve)
+        "1": ("线路", wires.solve),
     }
 
     while True:
