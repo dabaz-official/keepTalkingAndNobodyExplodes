@@ -1,4 +1,4 @@
-# 单词列表
+# 单词列表（包含 think 和 thing）
 word_list = [
     "about", "after", "again", "below", "could", "every", "first", "found", "great",
     "house", "large", "learn", "never", "other", "place", "plant", "point", "right",
@@ -7,42 +7,44 @@ word_list = [
 ]
 
 
-def find_unique_word():
-    # 存储每个位置的字母集合
-    positions = []
-
-    # 提示用户输入 5 个位置的字母
-    for i in range(5):
-        prompt = f"请输入第 {i + 1} 个位置的 6 个字母（无需空格分隔，例如 abcdef）："
+def find_possible_words():
+    while True:
+        # 提示用户输入一行 18 个字母
+        prompt = "请输入第 1、2、5 个位置的字母："
         letters = input(prompt).strip().lower()
 
         # 验证输入
-        if len(letters) != 6:
-            print(f"错误：第 {i + 1} 个位置需要输入 6 个字母！")
-            return
-        # 转换为集合以便快速查找
-        positions.append(set(letters))
+        if len(letters) != 18:
+            print("错误：请输入 18 个字母（每个位置 6 个字母）！")
+            continue
 
-    # 筛选符合条件的单词
-    matching_words = []
-    for word in word_list:
-        # 检查单词的每个字母是否在对应位置的集合中
-        is_match = True
-        for pos in range(5):
-            if word[pos] not in positions[pos]:
-                is_match = False
-                break
-        if is_match:
-            matching_words.append(word)
+        # 将输入分成三组（每组 6 个字母）
+        positions = [
+            set(letters[0:6]),  # 第 1-6 个字母 -> 第 1 个位置
+            set(letters[6:12]),  # 第 7-12 个字母 -> 第 2 个位置
+            set(letters[12:18])  # 第 13-18 个字母 -> 第 5 个位置
+        ]
 
-    # 检查结果
-    if len(matching_words) == 1:
-        print("唯一符合条件的单词是:", matching_words[0])
-    elif len(matching_words) == 0:
-        print("没有符合条件的单词！")
-    else:
-        print("符合条件的单词不唯一:", ", ".join(matching_words))
+        # 筛选符合条件的单词（只检查第 1、2、5 个字母）
+        matching_words = []
+        for word in word_list:
+            # 检查单词的第 1、2、5 个字母是否在对应位置的集合中
+            if (word[0] in positions[0] and  # 第 1 个字母
+                    word[1] in positions[1] and  # 第 2 个字母
+                    word[4] in positions[2]):  # 第 5 个字母
+                matching_words.append(word)
+
+        # 输出结果
+        if len(matching_words) == 0:
+            print("没有符合条件的单词！")
+        else:
+            print("符合条件的单词是:", ", ".join(matching_words))
+
+        print("\n准备下一次输入（按 Ctrl+C 退出）...")
 
 
 # 运行程序
-find_unique_word()
+try:
+    find_possible_words()
+except KeyboardInterrupt:
+    print("\n程序已退出。")
