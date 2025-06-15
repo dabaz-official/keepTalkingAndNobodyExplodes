@@ -1,7 +1,5 @@
-from utils import get_serial_number
-
-def solve():
-    print("\n=== 简单电线模块 ===")
+def solve(bomb_info):
+    print("\n=== 线路模块 ===")
     while True:
         try:
             num_wires = int(input("请输入电线数量（3-6）："))
@@ -50,8 +48,8 @@ def solve():
                 print("请输入有效的数字！")
 
         if red_count in [2, 3]:
-            _, _, is_last_digit_odd = get_serial_number()
-            if is_last_digit_odd:
+            last_digit_odd = bomb_info["last_digit_odd"]
+            if last_digit_odd:
                 return "剪最后一根红线"
             # 若偶数，继续到问题3
 
@@ -95,8 +93,8 @@ def solve():
         # 5 根电线的判断逻辑
         is_last_black = input("最后一根线是否是黑线？（y/n）：").strip().lower()
         if is_last_black == 'y':
-            _, _, is_last_digit_odd = get_serial_number()
-            if is_last_digit_odd:
+            last_digit_odd = bomb_info["last_digit_odd"]
+            if last_digit_odd:
                 return 4  # 剪第四根电线
             # 若偶数，继续到问题2
 
@@ -150,8 +148,8 @@ def solve():
                 print("请输入有效的数字！")
 
         if yellow_count == 0:
-            _, _, is_last_digit_odd = get_serial_number()
-            if is_last_digit_odd:
+            last_digit_odd = bomb_info["last_digit_odd"]
+            if last_digit_odd:
                 return 3  # 剪第三根电线
             # 若偶数，继续到问题3
 
