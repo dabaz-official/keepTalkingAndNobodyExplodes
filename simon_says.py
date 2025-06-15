@@ -1,8 +1,5 @@
-def solve(params):
-    serial_info, _ = params  # 解包参数，仅使用 serial_info
-    has_vowel, _, _ = serial_info  # 解包序列号信息，获取是否有元音字母
-
-    print("\n=== 四色方块模块 ===")
+def solve(bomb_info):
+    print("\n=== 四色方块 ===")
 
     # 询问并缓存失误次数
     while True:
@@ -24,6 +21,7 @@ def solve(params):
 
     # 定义对应关系字典
     mapping = {}
+    has_vowel = bomb_info["has_vowel"]
     if has_vowel:  # 情况 1：包含元音字母
         if strikes == 0:  # 情况 1.1
             mapping = {'r': 'b', 'b': 'r', 'g': 'y', 'y': 'g'}
