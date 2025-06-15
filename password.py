@@ -1,7 +1,5 @@
-def solve(params):
-    _, _ = params  # 解包参数，暂不使用 serial_info 和 battery_count
-
-    print("\n=== 密码模块 ===")
+def solve(bomb_info):
+    print("\n=== 密码 ===")
     print("每个位置有 6 个可能的字母（A-Z）。")
     print("请输入 3 组字母（每组 6 个字母，分别对应第 1、2、5 个位置）：")
 
