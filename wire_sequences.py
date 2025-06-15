@@ -1,7 +1,5 @@
-def solve(params):
-    _, _ = params  # 解包参数，暂不使用 serial_info 和 battery_count
-
-    print("\n=== 顺序线路模块 ===")
+def solve(bomb_info):
+    print("\n=== 顺序线路 ===")
     print("每页输入线路配置（例如 rabbkb），每两个字母代表一根线：")
     print("第一个字母：r(红), b(蓝), k(黑)；第二个字母：A, B, C。")
 
